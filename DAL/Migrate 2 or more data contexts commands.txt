@@ -1,0 +1,18 @@
+Instructions to migrate two (2) different Data Contexts from within the same application
+========================================================================================
+
+-----------------------------> First Data Context <-----------------------------
+1. enable-migrations -ContextTypeName SnapTextWeb.Models.ApplicationDbContext -MigrationsDirectory:'Migrations/Identity'
+
+2. Add-Migration -configuration SnapTextWeb.Migrations.Identity.Configuration Initialization
+
+3. Update-Database -configuration SnapTextWeb.Migrations.Identity.Configuration -Verbose
+
+
+-----------------------------> Second Data Context <-----------------------------
+
+4. enable-migrations -ContextTypeName SnapTextWeb.DAL.SnapTextDataContext -MigrationsDirectory:'Migrations/DAL'
+
+5. Add-Migration -configuration SnapTextWeb.Migrations.DAL.Configuration Initialization
+
+6. Update-Database -configuration SnapTextWeb.Migrations.DAL.Configuration -Verbose
